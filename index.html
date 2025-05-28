@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NMR Analysis Flowchart</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin: 0 0 10px 0;
+        }
+        
+        .header p {
+            color: #7f8c8d;
+            font-size: 1.2em;
+            margin: 0;
+        }
+        
+        .nmr-sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .nmr-section {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            border-left: 5px solid;
+        }
+        
+        .carbon-nmr {
+            border-left-color: #e74c3c;
+        }
+        
+        .proton-nmr {
+            border-left-color: #3498db;
+        }
+        
+        .section-title {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .carbon-nmr .section-title {
+            color: #e74c3c;
+        }
+        
+        .proton-nmr .section-title {
+            color: #3498db;
+        }
+        
+        .flowchart-step {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .step-number {
+            background: #34495e;
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            font-size: 0.9em;
+        }
+        
+        .step-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            margin-left: 20px;
+        }
+        
+        .step-content {
+            color: #555;
+            line-height: 1.4;
+        }
+        
+        .key-values {
+            background: #ecf0f1;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        .arrow {
+            text-align: center;
+            font-size: 1.5em;
+            color: #95a5a6;
+            margin: 10px 0;
+        }
+        
+        .tips-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+        
+        .tips-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .tip-box {
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .tip-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .highlight {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 4px;
+            padding: 3px 6px;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .nmr-sections {
+                grid-template-columns: 1fr;
+            }
+            
+            .tips-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧪 NMR Spectroscopy Analysis</h1>
+            <p>A Step-by-Step Guide for A-Level Chemistry Students</p>
+        </div>
+        
+        <div class="nmr-sections">
+            <!-- Carbon NMR Section -->
+            <div class="nmr-section carbon-nmr">
+                <div class="section-title">¹³C NMR Analysis</div>
+                
+                <div class="flowchart-step">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Count the Peaks - Understanding Symmetry</div>
+                    <div class="step-content">
+                        Each peak = one unique carbon environment (symmetry reduces peaks!)
+                        <div class="key-values">
+                            <strong>Symmetry Examples:</strong><br>
+                            <strong>Propan-2-ol:</strong> CH₃-CH(OH)-CH₃ → 2 peaks (not 3!)
+                            • Both CH₃ groups are identical (mirror images)
+                            • Only 2 different carbon environments<br><br>
+                            
+                            <strong>Butane:</strong> CH₃-CH₂-CH₂-CH₃ → 2 peaks (not 4!)
+                            • End CH₃ groups are equivalent
+                            • Middle CH₂ groups are equivalent<br><br>
+                            
+                            <strong>2-Methylpropane:</strong> (CH₃)₃CH → 2 peaks (not 4!)
+                            • All three CH₃ groups are identical
+                            • Only CH and CH₃ environments<br><br>
+                            
+                            <strong>No Symmetry - Butan-2-ol:</strong> CH₃CH(OH)CH₂CH₃ → 4 peaks
+                            • All carbons in different environments
+                            • OH group breaks symmetry
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="arrow">↓</div>
+                
+                <div class="flowchart-step">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Identify Chemical Shifts (AQA Data Sheet)</div>
+                    <div class="step-content">
+                        Use the AQA chemical shift ranges:
+                        <div class="key-values">
+                            <strong>Example:</strong> Ethyl ethanoate CH₃COOCH₂CH₃
+                            • ~14 ppm: CH₃ (alkyl)
+                            • ~21 ppm: CH₃CO (next to C=O)  
+                            • ~61 ppm: OCH₂ (carbon next to oxygen)
+                            • ~171 ppm: C=O (carbonyl carbon)
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="arrow">↓</div>
+                
+                <div class="flowchart-step">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Match to Molecular Formula</div>
+                    <div class="step-content">
+                        Check your structure matches:
+                        <div class="key-values">
+                            <strong>Example:</strong> C₄H₈O₂ (4 peaks in ¹³C NMR)
+                            • 4 carbons ✓
+                            • Look for functional groups based on chemical shifts
+                            • Peak at ~170 ppm confirms C=O
+                            • Could be butanoic acid or methyl propanoate
+                            • Use both NMR spectra together to distinguish
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Proton NMR Section -->
+            <div class="nmr-section proton-nmr">
+                <div class="section-title">¹H NMR Analysis</div>
+                
+                <div class="flowchart-step">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Count Peaks & Integration</div>
+                    <div class="step-content">
+                        Each peak = one unique H environment<br>
+                        <strong>Integration = number of protons in that environment</strong>
+                        <div class="key-values">
+                            <strong>Example:</strong> Ethanol CH₃CH₂OH
+                            • 3 peaks in ratio 3:2:1
+                            • CH₃ (3H) : CH₂ (2H) : OH (1H)
+                            • Integration shows HOW MANY H are in each environment
+                            • OH may not always integrate properly (exchangeable)
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="arrow">↓</div>
+                
+                <div class="flowchart-step">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Analyze Chemical Shifts (AQA Data Sheet)</div>
+                    <div class="step-content">
+                        Identify functional groups using AQA ranges:
+                        <div class="key-values">
+                            <strong>Example:</strong> Ethanol CH₃CH₂OH
+                            • 1.2 ppm: CH₃ (alkyl, triplet)
+                            • 3.7 ppm: CH₂ (next to OH, quartet)
+                            • 5.4 ppm: OH (exchangeable, broad singlet)
+                            <em>Note: OH chemical shift varies with concentration</em>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="arrow">↓</div>
+                
+                <div class="flowchart-step">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Examine Splitting Patterns</div>
+                    <div class="step-content">
+                        Apply <span class="highlight">n+1 rule</span> (only for AQA A-level):
+                        <div class="key-values">
+                            <strong>Example 1:</strong> Ethyl ethanoate CH₃COOCH₂CH₃
+                            • 1.3 ppm: triplet (CH₃, split by 2H on adjacent CH₂)
+                            • 2.1 ppm: singlet (CH₃CO, no adjacent H)
+                            • 4.1 ppm: quartet (OCH₂, split by 3H on adjacent CH₃)<br><br>
+                            
+                            <strong>Example 2:</strong> Propan-1-ol CH₃CH₂CH₂OH
+                            • 1.0 ppm: triplet (CH₃, split by 2H on adjacent CH₂)
+                            • 1.6 ppm: quartet (middle CH₂, split by 3H on adjacent CH₃)
+                            • 3.7 ppm: triplet (CH₂OH, split by 2H on adjacent CH₂)<br><br>
+                            
+                            <strong>Example 3:</strong> Ethanol CH₃CH₂OH
+                            • 1.2 ppm: triplet (CH₃, split by 2H on adjacent CH₂)
+                            • 3.7 ppm: quartet (CH₂, split by 3H on adjacent CH₃)
+                            • OH doesn't follow n+1 rule (exchangeable)
+                            
+                            <em>Remember: equivalent H don't split each other</em>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="arrow">↓</div>
+                
+                <div class="flowchart-step">
+                    <div class="step-number">4</div>
+                    <div class="step-title">Build the Structure</div>
+                    <div class="step-content">
+                        Piece together the fragments systematically:
+                        <div class="key-values">
+                            <strong>Example:</strong> C₃H₆O (aldehyde vs ketone?)
+                            • Triplet at 1.1 ppm (3H) + Quartet at 2.4 ppm (2H) = CH₃CH₂-
+                            • Singlet at 9.8 ppm (1H) = CHO (aldehyde H)
+                            • Structure: CH₃CH₂CHO (propanal) not CH₃COCH₃
+                            <em>Aldehyde H is distinctive at ~9.7 ppm</em>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tips-section">
+            <div class="tips-title">💡 AQA A-Level NMR Success Tips</div>
+            <div class="tips-grid">
+                <div class="tip-box">
+                    <div class="tip-title">Mastering Symmetry in NMR</div>
+                    <strong>Key Rule:</strong> Carbons (or hydrogens) that can be swapped by rotation/reflection are equivalent<br><br>
+                    <strong>Test for Equivalence:</strong><br>
+                    • Can you rotate the molecule to make the atoms identical?<br>
+                    • Are they mirror images across a plane of symmetry?<br>
+                    • If YES to either = equivalent = same peak<br><br>
+                    <strong>Symmetry Breakers:</strong><br>
+                    • Functional groups (OH, COOH, CHO)<br>
+                    • Different substituents<br>
+                    • Chiral centers (Carbon with 4 different groups/atoms attached to it)
+                </div>
+                
+                <div class="tip-box">
+                    <div class="tip-title">Use Your Data Sheet</div>
+                    The AQA data sheet gives you chemical shift ranges. Don't memorize - learn to use the sheet effectively. Focus on recognizing patterns rather than exact values.
+                </div>
+                
+                <div class="tip-box">
+                    <div class="tip-title">More Symmetry Practice</div>
+                    <strong>Propanone (acetone):</strong> CH₃COCH₃ → 2 peaks<br>
+                    • Both CH₃ groups equivalent<br><br>
+                    <strong>Ethyl methanoate:</strong> HCOOCH₂CH₃ → 3 peaks<br>
+                    • CHO, OCH₂, CH₃ all different<br><br>
+                    <strong>Diethyl ether:</strong> CH₃CH₂OCH₂CH₃ → 2 peaks<br>
+                    • Perfect symmetry around oxygen<br>
+                    • Both CH₃ equivalent, both CH₂ equivalent
+                </div>
+                
+                <div class="tip-box">
+                    <div class="tip-title">Classic AQA Patterns</div>
+                    <strong>Ethyl group:</strong> Triplet (~1.2 ppm) + Quartet (~4.1 ppm if next to O)<br>
+                    <strong>Propyl group:</strong> Triplet + Quartet + Multiplet<br>
+                    <strong>Aromatic:</strong> Usually 7.0-7.5 ppm region
+                </div>
+                
+                <div class="tip-box">
+                    <div class="tip-title">Symmetry in ¹H NMR Too!</div>
+                    <strong>Propan-2-ol ¹H NMR:</strong><br>
+                    • 6H at ~1.2 ppm (both CH₃ groups, doublet)<br>
+                    • 1H at ~4.0 ppm (CH, septet)<br>
+                    • 1H at ~2.5 ppm (OH, broad)<br><br>
+                    <strong>Key Point:</strong> Integration shows 6:1:1 ratio because of equivalent hydrogens!
+                </div>
+                
+                <div class="tip-box">
+                    <div class="tip-title">Integration Ratios & Symmetry</div>
+                    Always simplify ratios: 6:4:2 becomes 3:2:1. Large integrations often indicate symmetry (multiple equivalent H). If integration doesn't match, check for overlapping peaks or exchangeable protons (OH, NH).
+                </div>
+                
+                <div class="tip-box">
+                    <div class="tip-title">Common AQA Mistakes</div>
+                    • <strong>Biggest Error:</strong> Forgetting about symmetry (always check for equivalent groups!)<br>
+                    • Not recognizing CH₃CO groups (singlet ~2.1 ppm)<br>
+                    • Confusing aldehydes (~9.7 ppm) with aromatics (~7.2 ppm)<br>
+                    • Missing that high integration = multiple equivalent H
+                </div>
+                
+                <div class="tip-box">
+                    <div class="tip-title">Exam Strategy</div>
+                    1. <strong>Start with molecular formula:</strong> Note the number of carbons, hydrogens, and other atoms<br>
+                    2. Count peaks in both spectra<br>
+                    3. <strong>Check for symmetry:</strong> Fewer peaks than atoms = symmetry!<br>
+                    4. Look for "giveaway" signals (CHO, COOH, aromatic)<br>
+                    5. Build from the most obvious fragments<br>
+                    6. <strong>Use both spectra together</strong> - ¹³C shows skeleton, ¹H shows detail
+                </div>
+                
+                <div class="tip-box">
+                    <div class="tip-title">Key AQA Functional Groups & Symmetry Quick Check</div>
+                    <strong>¹³C NMR:</strong> C=O (~170-200 ppm), Aromatic (~120-140 ppm)<br>
+                    <strong>¹H NMR:</strong> CHO (~9.7 ppm), COOH (~11-12 ppm), Aromatic (~7.2 ppm)<br><br>
+                    <strong>Quick Symmetry Test:</strong> Draw the structure, look for a line/plane of symmetry. Atoms on opposite sides of this line are equivalent!
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
